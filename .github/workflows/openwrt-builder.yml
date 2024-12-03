@@ -38,7 +38,7 @@ jobs:
     
     - name: Modify IMAGE_SIZE for hiwifi_hc5761 in mt7620.mk
       run: |
-        cd target/linux/ramips/image
+        cd openwrt/target/linux/ramips/image
         sed -i '/define Device\/hiwifi_hc5761/,/endef/ {
           s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32768k/
         }' mt7620.mk
