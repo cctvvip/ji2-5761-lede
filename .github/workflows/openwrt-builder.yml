@@ -72,9 +72,8 @@ jobs:
         }' mt7620.mk
 
     - name: Clone luci-app-partexp
-        run: |
-          cd openwrt && git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
-          
+      run: cd openwrt && git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
+       
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
