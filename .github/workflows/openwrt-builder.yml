@@ -68,7 +68,7 @@ jobs:
       run: |
         cd openwrt/target/linux/ramips/image
         sed -i '/define Device\/hiwifi_hc5761/,/endef/ {
-          s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32768k/
+          s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32512k/
         }' mt7620.mk
 
     - name: Clone luci-app-partexp
