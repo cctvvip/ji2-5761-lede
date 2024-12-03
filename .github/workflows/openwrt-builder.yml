@@ -35,13 +35,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-    
-    - name: Modify IMAGE_SIZE for hiwifi_hc5761 in mt7620.mk
-      run: |
-        cd openwrt/target/linux/ramips/image
-        sed -i '/define Device\/hiwifi_hc5761/,/endef/ {
-          s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32768k/
-        }' mt7620.mk
 
     - name: Initialization environment
       env:
@@ -70,6 +63,13 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+    
+    - name: Modify IMAGE_SIZE for hiwifi_hc5761 in mt7620.mk
+      run: |
+        cd openwrt/target/linux/ramips/image
+        sed -i '/define Device\/hiwifi_hc5761/,/endef/ {
+          s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32768k/
+        }' mt7620.mk
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
