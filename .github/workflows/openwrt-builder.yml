@@ -71,6 +71,12 @@ jobs:
           s/IMAGE_SIZE := 15808k/IMAGE_SIZE := 32512k/
         }' mt7620.mk
 
+    - name: Enter OpenWRT directory and modify device tree for firmware partition size
+      run: |
+        cd openwrt
+        sed -i 's|reg = <0x50000 0xf70000>|reg = <0x50000 0x1F80000>|' target/linux/ramips/dts/mt7620a_hiwifi_hc5x61.dtsi
+        echo "Modified reg value for firmware partition size."
+
     - name: Clone luci-app-partexp
       run: cd openwrt && git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
        
